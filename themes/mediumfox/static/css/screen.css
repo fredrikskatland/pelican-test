@@ -7859,3 +7859,11 @@ article .meta a {
   padding: 6px 0px 0px 0px;
   text-transform: none;
 }
+
+.disclaimer-banner {
+  background-color: #ffcccc;  /* A light red background */
+  color: #990000;             /* Darker red text */
+  text-align: center;         /* Center the text */
+  padding: 10px 0;            /* Add some space above/below the text */
+  font-weight: bold;          /* Make the text bold */
+}
