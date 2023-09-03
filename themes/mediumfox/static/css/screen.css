@@ -7875,8 +7875,8 @@ article .meta a {
 }
 
 .rss-icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: inline-block; /* Ensures it aligns well with adjacent text */
   vertical-align: middle; /* Aligns the middle of the icon with the middle of the text */
 }
