@@ -1,6 +1,6 @@
 AUTHOR = 'Fredrik Skatland'
 SITENAME = 'Hello world'
-SITEURL = ''
+SITEURL = 'https://fredrikskatland.com'
 
 PATH = 'content'
 
@@ -28,9 +28,14 @@ SOCIAL = (('You can add links in your config file', '#'),
 DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 THEME = "./themes/mediumfox"
 
 FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+
+FEED_DOMAIN = SITEURL
+FEED_MAX_ITEMS = 10
+
+
