@@ -7861,9 +7861,15 @@ article .meta a {
 }
 
 .disclaimer-banner {
-  background-color: #ffcccc;  /* A light red background */
-  color: #990000;             /* Darker red text */
-  text-align: center;         /* Center the text */
-  padding: 10px 0;            /* Add some space above/below the text */
-  font-weight: bold;          /* Make the text bold */
+  background-color: #ffcccc;   /* A light red background */
+  color: #990000;              /* Darker red text */
+  text-align: center;          /* Horizontally center the text */
+  padding: 10px 0;             /* Add some space above/below the text */
+  font-weight: bold;           /* Make the text bold */
+
+  /* Vertical Centering */
+  display: flex;               /* Use Flexbox */
+  justify-content: center;     /* Horizontally center (for good measure) */
+  align-items: center;         /* Vertically center */
+  height: 60px;                /* Define a height for the banner */
 }
