@@ -7873,3 +7873,10 @@ article .meta a {
   align-items: center;         /* Vertically center */
   height: 60px;                /* Define a height for the banner */
 }
+
+.rss-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block; /* Ensures it aligns well with adjacent text */
+  vertical-align: middle; /* Aligns the middle of the icon with the middle of the text */
+}
