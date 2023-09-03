@@ -31,3 +31,6 @@ DEFAULT_PAGINATION = False
 RELATIVE_URLS = True
 
 THEME = "./themes/mediumfox"
+
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
