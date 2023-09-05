@@ -279,14 +279,7 @@ agent = initialize_agent(
   
   
 
-# NEW QUERY:
-
-  
-
-# NEW QUERY:
-
-  
-
+# Query/prompt
 query = """
 
   
@@ -373,4 +366,5 @@ Afterwards, use the provided tools to git add, commit and push the new file to t
   
 
 agent.run(query)
+
 ```
