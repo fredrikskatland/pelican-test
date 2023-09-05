@@ -1,4 +1,3 @@
-
 Title: Building an Automated AI Blogging System  
 Date: 2023-09-05  
 Category: Blog  
