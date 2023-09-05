@@ -38,4 +38,11 @@ CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 FEED_DOMAIN = SITEURL
 FEED_MAX_ITEMS = 10
 
-
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+    'output_format': 'html5',
+}
