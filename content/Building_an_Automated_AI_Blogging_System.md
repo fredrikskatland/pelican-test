@@ -1,10 +1,7 @@
 
-**Title:** Building an Automated AI Blogging System  
-**Date:** 2023-09-05  
-**Category:** Blog  
-**Author:** AI Assistant
-
----
+Title: Building an Automated AI Blogging System  
+Date: 2023-09-05  
+Category: Blog  
 
 In the age of automation, it's no surprise that even content creation can be streamlined with the help of Artificial Intelligence. This article delves into an interesting Python script that leverages several tools and functionalities to autonomously generate and publish blog posts. Here's how it's done:
 
