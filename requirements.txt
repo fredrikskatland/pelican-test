@@ -1,6 +1,3 @@
 pelican[Markdown]
-<<<<<<< HEAD
 pygments
-=======
-pygments
->>>>>>> 90ba964ca19611e0722976c3723e342bcfcc2914
+
