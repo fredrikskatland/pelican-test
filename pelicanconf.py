@@ -50,6 +50,6 @@ MARKDOWN = {
 }
 
 #AUTHOR_TWITTER = 'your_twitter_username'  # if you have one, otherwise you can comment or skip this line
-AUTHOR_GITHUB = 'fredrik-skatland-21b35a6b'
-AUTHOR_LINKEDIN = 'fredrikskatland'
+AUTHOR_LINKEDIN= 'fredrik-skatland-21b35a6b'
+AUTHOR_GITHUB = 'fredrikskatland'
 AUTHOR_HUGGINGFACE = 'fredrikskatland'
