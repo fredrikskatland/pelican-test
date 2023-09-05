@@ -22,7 +22,6 @@ LINKS = (('Pelican', 'https://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-# Social widget
 SOCIAL = (('LinkedIn', 'https://www.linkedin.com/in/fredrik-skatland-21b35a6b/'),
           ('GitHub', 'https://github.com/fredrikskatland'),
           ('HuggingFace', 'https://huggingface.co/fredrikskatland'),)
@@ -39,7 +38,7 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
 
 FEED_DOMAIN = SITEURL
-FEED_MAX_ITEMS = 10
+FEED_MAX_ITEMS = 5
 
 MARKDOWN = {
     'extension_configs': {
@@ -49,3 +48,8 @@ MARKDOWN = {
     },
     'output_format': 'html5',
 }
+
+#AUTHOR_TWITTER = 'your_twitter_username'  # if you have one, otherwise you can comment or skip this line
+AUTHOR_GITHUB = 'fredrik-skatland-21b35a6b'
+AUTHOR_LINKEDIN = 'fredrikskatland'
+AUTHOR_HUGGINGFACE = 'fredrikskatland'
