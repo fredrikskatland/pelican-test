@@ -1,7 +1,5 @@
-# Exploring the Plan and Building Law Chatbot
-
+Title: Exploring the Plan and Building Law Chatbot
 Date: 2023-09-06
-
 Category: Blog
 
 ## Introduction
