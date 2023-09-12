@@ -1,27 +1,73 @@
-Title: Web Scraping Job Postings with Python
+Title: Introduction to Web Scraping and Text Extraction with Python
 Date: 2023-09-12
 Category: Blog
 
-## Introduction
+One of the most common tasks in data analysis is extracting information from public websites. In Python, we have several libraries, like Beautiful Soup and requests, that make it simple to scrape web data. In this article, we're going to discuss how to extract website data with Python using these libraries. We're also going to cover XML data parsing using xmltodict, and we'll be using langchain.vectorstore, langchain.embeddings, and langchain.schema for vector store manipulation and document embeddings.
 
-This blog post will discuss a Python script that scrapes job postings from a website and stores the data in an Elasticsearch database. The script uses the BeautifulSoup library to parse the HTML of the web pages and extract the relevant information. The script also uses the requests library to send HTTP requests to the website and retrieve the HTML of the web pages. The extracted data is then converted into a markdown format and stored in an Elasticsearch database.
+Let's consider the Python script below. Here's an overview of what it does: 
 
-## Code Explanation
+1. Fetches an XML feed of job listings from "https://www.finn.no/feed/job/atom.xml?rows=1500".
 
-The script starts by importing the necessary libraries. The BeautifulSoup library is used to parse the HTML of the web pages and extract the relevant information. The requests library is used to send HTTP requests to the website and retrieve the HTML of the web pages.
+2. Parses the XML data to retrieve listing URLs.
 
-The script defines a function called `extract_text_from` that takes a URL as an argument. This function sends a GET request to the URL and parses the HTML of the web page. It then uses BeautifulSoup's select_one method to navigate to the specific elements of the web page and extract the text from these elements. The extracted text is then converted into a markdown format.
+3. Visits each URL to scrape job details.
 
-The script then sends a GET request to the website's Atom feed and parses the XML response. It loops through each entry in the feed, sends a GET request to the URL of the entry, and calls the `extract_text_from` function to extract the text from the web page. The extracted text and other data are then stored in a dictionary and added to a list.
+4. Structures the data and enhances it for further analysis.
 
-Finally, the script creates an ElasticsearchStore from the documents, generates embeddings for the documents using the OpenAIEmbeddings, and creates a retriever tool that can be used to search for relevant job postings.
+```python
+from langchain.vectorstores import ElasticsearchStore
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.schema import Document
+import requests
+from bs4 import BeautifulSoup
+import xmltodict
+from langchain.agents.agent_toolkits import create_retriever_tool, create_conversational_retrieval_agent
+from langchain.chat_models import ChatOpenAI
+```
 
-## Code Execution
+The above lines are importing all the necessary libraries for our script. We'll be using the requests library to send HTTP requests, BeautifulSoup to parse HTML and extract the information we want, xmltodict to parse the XML data feed, and langchain related libraries for retrieving and manipulating the scraped data.
 
-To run the script, you would need to have the necessary libraries installed and an Elasticsearch server running. You can call the `extract_text_from` function with a URL to extract the text from a web page. The function returns the extracted text in a markdown format and a dictionary with additional data.
+Next, we define a method `extract_text_from(url)`. This function accepts a URL and uses requests and BeautifulSoup to parse the HTML and extract the required data.
 
-The script also creates a retriever tool that can be used to search for relevant job postings. You can use the `search_finn` method of the retriever tool to search for job postings. The method takes a query as an argument and returns the top 3 most relevant job postings.
+```python
+def extract_text_from(url):
+    # rest of the code...
+```
 
-## Conclusion
+In this function, we start by making a request to the passed url and using BeautifulSoup to parse the HTML. We then use the `select_one` method to select specific parts of the HTML that correspond to the data we want to extract.
 
-This blog post discussed a Python script that scrapes job postings from a website and stores the data in an Elasticsearch database. The script uses the BeautifulSoup and requests libraries to scrape the web pages and extract the relevant information. The extracted data is then converted into a markdown format and stored in an Elasticsearch database. The script also creates a retriever tool that can be used to search for relevant job postings. This script is a useful tool for anyone interested in web scraping or data storage and retrieval, and can be easily modified to scrape other websites or store the data in a different format or database.
+Once we have all the desired data, we create a dictionary to store it, and a markdown string for display. The extracted data is then returned from the function.
+
+Next, the script fetches and parses an XML feed of job listings:
+
+```python
+r = requests.get("https://www.finn.no/feed/job/atom.xml?rows=1500")
+xml = r.text
+raw = xmltodict.parse(xml)
+```
+
+In the loops that follow, the script visits each job listing URL, extracts the details using the `extract_text_from` function, and stores the result in the `pages` array.
+
+Now that we have the job data, we separate the text content and metadata for each page:
+
+```python
+docs, metadatas = [], []
+# rest of the code...
+```
+
+Afterwards, the documents are converted into Document objects and embedded into an ElasticsearchStore. Once stored, the ElasticsearchStore is converted to a retriever that can be queried to find similar documents:
+
+```python
+documents = [Document(page_content=string, metadata=meta) for string, meta in zip(docs, metadatas)]
+# rest of the code...
+```
+
+Lastly, the script creates a ChatOpenAI instance and a retrieval tool, and combines them into a conversational retrieval agent that can be used to find similar job listings based on user input:
+
+```python
+llm = ChatOpenAI(temperature = 0, model_name = "gpt-3")
+agent_executor = create_conversational_retrieval_agent(llm, tools, verbose=True)
+# agent interaction here...
+```
+
+So, there you have it! The script does a great job scraping and extracting relevant data from a series of web pages to fulfill a specific purpose. This blog only covers the high level of the script, and you can deep dive into each step to get a full understanding of the concepts and techniques used here.
